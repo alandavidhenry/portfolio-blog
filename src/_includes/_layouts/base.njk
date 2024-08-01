@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <title>{{ title }}</title>
+    <meta name="title" content="{{ title }}" />
+    <!-- length should be within 60 characters -->
+    <meta name="description" content="{{ description }}" />
+    <!-- length should be within 160 characters -->
+    <meta name="image" content="{{ image }}" />
+    <!-- URL of the hero or featured image of the page - at least 1200x630px -->
+    <meta name="author" content="{{ author or 'Alan Henry' }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <!-- URL similar to "description" above -->
+    <meta property="og:type" content="{{ contentType }}" />
+    <!-- https://ogp.me/#types -->
+    <meta property="og:image" content="{{ image }}" />
+    <!-- URL similar to "image" above -->
+    <meta property="og:image:secure_url" content="{{ secureImageUrl }}" />
+    <!-- An alternate secure (HTTPS) URL of the hero or featured image -->
+    <meta property="og:image:type" content="{{ imageType or 'image/png' }}" />
+    <meta property="og:image:alt" content="{{ imageAlt }}" />
+    <!-- alt description of the image -->
+    <meta property="og:image:width" content="{{ imageWidth }}" />
+    <meta property="og:image:height" content="{{ imageHeight }}" />
+    <meta property="og:url" content="{{ canonicalUrl }}" />
+    <!-- The canonical URL of the web page -->
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="" />
+    <!-- name of the website the web page is a part of -->
+    <meta property="og:updated_time" content="{{ updatedTime }}" />
+    <!-- date and time (in ISO 8601 format) the page was last updated or modified -->
+    <meta
+      property="article:publisher"
+      content="{{ publisher or 'Alan Henry' }}"
+    />
+    <!-- URL of the Facebook page of the website or company -->
+    <meta property="article:author" content="{{ author or 'Alan Henry' }}" />
+    <!-- URL of the Facebook profile page of the author -->
+    <meta property="article:published_time" content="{{ publishedTime }}" />
+    <meta property="article:modified_time" content="{{ updatedTime }}" />
+    <meta property="article:section" content="{{ articleSection }}" />
+    <meta property="article:tag" content="{{ articleTag }}" />
+    <meta name="twitter:card" content="summary" />
+    <!-- type of card to use for the post when embedded on X -->
+    <meta name="twitter:site" content="{{ twitterSite or 'alandavidhenry' }}" />
+    <!-- username handle of the website on X -->
+    <meta
+      name="twitter:creator"
+      content="{{ twitterCreator or 'alandavidhenry' }}"
+    />
+    <!-- username handle of the content creator on X -->
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:image" content="{{ image }}" />
+    <!-- URL of the hero or featured image of the page -->
+    <meta name="twitter:image:alt" content="{{ imageAlt }}" />
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_PATH }}/css/tailwind.css" />
+    <link rel="stylesheet" href="{{ STATIC_PATH }}/css/styles.css" />
+    {% endblock %}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    {% block content %} {% endblock %} {% block scripts %}
+    <script src="{{ STATIC_PATH }}/js/bundle.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/'
+            })
+          }
+        })
+      }
+    </script>
+    {% endblock %}
+  </body>
+</html>
