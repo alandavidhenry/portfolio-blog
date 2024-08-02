@@ -62,14 +62,13 @@
     <meta name="twitter:image:alt" content="{{ imageAlt }}" />
 
     {% block stylesheets %}
-    <link rel="stylesheet" href="{{ STATIC_PATH }}/css/tailwind.css" />
-    <link rel="stylesheet" href="{{ STATIC_PATH }}/css/styles.css" />
+    <link rel="stylesheet" href="/css/tailwind.css" />
     {% endblock %}
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     {% block content %} {% endblock %} {% block scripts %}
-    <script src="{{ STATIC_PATH }}/js/bundle.js"></script>
+    <script src="/js/scripts.js"></script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', (user) => {
