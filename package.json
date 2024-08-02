@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:eleventy": "npx @11ty/eleventy --serve",
+    "start:eleventy": "eleventy --serve",
     "start:tailwind": "npx tailwindcss -i ./src/sass/tailwind.css -o ./dist/css/tailwind.css --watch",
+    "start:browsersync": "browser-sync start --server 'dist' --files 'dist' --port 8080 --no-notify --no-open --no-ui --no-ghostMode",
     "start": "npm-run-all --parallel start:*"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "@11ty/eleventy": "^2.0.1"
   },
   "devDependencies": {
+    "browser-sync": "^3.0.2",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
