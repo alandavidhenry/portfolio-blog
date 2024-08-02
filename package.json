@@ -7,7 +7,10 @@
     "start:eleventy": "eleventy --serve",
     "start:tailwind": "npx tailwindcss -i ./src/sass/tailwind.css -o ./dist/css/tailwind.css --watch",
     "start:browsersync": "browser-sync start --server 'dist' --files 'dist' --port 8080 --no-notify --no-open --no-ui --no-ghostMode",
-    "start": "npm-run-all --parallel start:*"
+    "start": "npm-run-all --parallel start:*",
+    "build:tailwind": "tailwindcss -i ./src/sass/tailwind.css -o ./dist/css/tailwind.css --minify",
+    "build:eleventy": "eleventy",
+    "build": "npm run build:tailwind && npm run build:eleventy"
   },
   "keywords": [],
   "author": "Alan Henry",
