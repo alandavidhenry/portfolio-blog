@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -62,13 +62,17 @@
     <meta name="twitter:image:alt" content="{{ imageAlt }}" />
 
     {% block stylesheets %}
-    <link rel="stylesheet" href="/css/tailwind.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/css/tailwind.css" rel="stylesheet" />
     {% endblock %}
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
-  <body>
+  <body class="w-full h-full bg-custom-light text-custom-dark">
     {% block content %} {% endblock %} {% block scripts %}
-    <!-- <script src="/js/scripts.js"></script> -->
+    <!-- <script src="/js/main.js"></script> -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', (user) => {
