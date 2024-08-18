@@ -19,10 +19,54 @@ twitterSite:
 twitterCreator:
 eleventyComputed:
   portfolioCards:
-    - name: 'App 1'
-      technologies: 'JavaScript'
-      description: 'Lorem'
-      url: '#'
+    - name: "MOD Digital"
+      technologies: 'HTML | CSS | JavaScript | Express | Keycloak | Playwright'
+      description: "Defence Digital's portal for all their services. I ensured that the website correctly used the MOD Design system to create a uniform and accessible design across all the services. Authentication..."
+      url: 'https://www.digital.mod.uk'
+      github: ''
+      image: 'digital-mod-uk.jpg'
+    - name: 'Pike House Farm'
+      technologies: 'HTML | CSS | Bootstrap | jQuery'
+      description: "A website created to showcase a friend's farm located in the Pennine Hills near Manchester. They supply locally reared meat to nearby butchers and also offer meat packs for local customers."
+      url: 'http://www.pikehousefarm.co.uk'
+      github: ''
+      image: 'pike_house_farm_lg.jpg'
+    - name: "Studio Session Planner"
+      technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
+      description: "A work-in-progress web-based app that is being developed to replace an Excel spreadsheet that was being used in by The Band of The Coldstream Guards to plan recording studio sessions. The Angular..."
+      url: 'https://studio-session-planner.web.app'
+      github: 'alandavidhenry/studio-session-planner'
+      image: 'studio_session_planner_2_lg.jpg'
+    - name: 'Aircraft Warehouse'
+      technologies: 'HTML | CSS | Bootstrap | JavaScript'
+      description: "A simple webpage created for the final assignment of the web developer module as part of the JHub Coding Scheme. This scheme aims to give serving personnel the opportunity to gain valuable..."
+      url: 'https://aircraft-warehouse.web.app'
+      github: 'alandavidhenry/aircraft-warehouse'
+      image: 'aircraft_warehouse_lg.jpg'
+    - name: 'The Goblin Store'
+      technologies: 'HTML | CSS | Bootstrap | jQuery | Firebase'
+      description: "A website created during the Intermediate Web Development course offered by With You With Me.I completed this course before being offered a role as a Full Stack Developer with With You With Me..."
+      url: 'https://wywm-gobblin-store.web.app/index.html'
+      github: 'alandavidhenry/WYWM-Intermediate-Web-Development'
+      image: 'goblin_store_2_lg.jpg'
+    - name: "Sergeants' Mess Booking App"
+      technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
+      description: "A work-in-progress web-based app that that can be used to book room and meals in the Sergeants' Mess in an Army barracks. The Angular framework was chosen due to its ability to easily pass data..."
+      url: 'https://mess-booking-app.web.app/dashboard'
+      github: 'alandavidhenry/mess-booking-app'
+      image: 'mess_booking_app_lg.jpg'
+    - name: "Minimalist Weather App (Using JS)"
+      technologies: 'HTML | CSS | JavaScript'
+      description: "Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have tried to keep this as simple as possible and used only JavaScript linked in the HTML file. I used..."
+      url: 'https://alandavidhenry.github.io/Minimalist-Weather-Page-PlainJS'
+      github: 'alandavidhenry/Minimalist-Weather-Page-PlainJS'
+      image: 'simple_weather_ex_lg.jpg'
+    - name: "Minimalist Weather App (Using Express & Node)"
+      technologies: 'HTML | CSS | JavaScript | Express | Node.js'
+      description: "Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have used the Express Generator to create the basic template then built on that. I used the simple..."
+      url: 'https://minimalist-weather-page-express.web.app'
+      github: 'alandavidhenry/Minimalist-Weather-Page-Express'
+      image: 'simple_weather_ex_lg.jpg'
 ---
 
 {% extends './_includes/_layouts/base.njk' %} {% block content %}
@@ -103,31 +147,33 @@ eleventyComputed:
           <article>
             <a
               href="#"
-              class="relative flex h-full flex-col overflow-hidden rounded-md sm:rounded-lg bg-custom-light hover:bg-white transform transition duration-300 hover:scale-105 focus-visible:bg-yellow-400"
+              class="relative flex h-full flex-col overflow-hidden rounded-md sm:rounded-lg bg-custom-light hover:bg-white transform transition duration-300 hover:scale-105 focus-visible:bg-yellow-400 border-solid border-8 border-custom-light"
             >
               <img
                 alt="Placeholder"
-                class="block h-auto w-full"
-                src="https://picsum.photos/600/400/?random"
+                class="block h-auto w-full rounded border-solid border border-gray-400"
+                src="images/{{ portfolioCard.image }}"
               />
               <div class="p-2.5 sm:p-5">
                 <h3
-                  class="text-2xl font-libreFranklin font-semibold text-custom-dark mb-1.5 sm:mb-2 md:mb-3"
+                  class="text-2xl font-libreFranklin font-semibold text-custom-dark mb-1"
                 >
                   {{ portfolioCard.name }}
                 </h3>
+                <!-- <h4
+                  class="text-base font-libreFranklin leading-normal text-gray-600 sm:block font-semibold hover:text-blue-700 hover:underline mb-4"
+                >
+                  {{ portfolioCard.url }}
+                </h4> -->
                 <h4
                   class="text-xs text-gray-600 font-libreFranklin font-semibold uppercase mb-4"
                 >
-                  {{ portfolioCard.techo }}
+                  {{ portfolioCard.technologies }}
                 </h4>
                 <p
                   class="text-base font-libreFranklin leading-normal text-gray-600 sm:block mb-4"
                 >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima expedita blanditiis sequi accusamus nam, ad laboriosam
-                  dignissimos magni dolorem est voluptatum doloribus amet error
-                  debitis reprehenderit. Qui eaque dolore a!
+                  {{ portfolioCard.description }}
                 </p>
                 <span
                   class="text-sm font-libreFranklin leading-normal text-custom-dark sm:block font-semibold hover:text-blue-700 hover:underline"
@@ -137,8 +183,6 @@ eleventyComputed:
             </a>
           </article>
           {% endfor %}
-
-
         </div>
       </div>
     </div>
@@ -146,7 +190,9 @@ eleventyComputed:
 
   <section class="bg-custom-light text-custom-dark" id="about">
     <div class="container mx-auto mb-12 px-4 py-24">
-      <h2 class="text-5xl xl:text-6xl font-lekton font-semibold mb-8">About me</h2>
+      <h2 class="text-5xl xl:text-6xl font-lekton font-semibold mb-8">
+        About me
+      </h2>
       <p
         class="text-base sm:text-lg md:text-xl text-gray-600 font-libreFranklin leading-relaxed"
       >
