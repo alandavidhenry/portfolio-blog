@@ -71,7 +71,14 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="w-full h-full bg-custom-light text-custom-dark">
-    {% block content %} {% endblock %} {% block scripts %}
+
+    {% include "layouts/header.njk" %}
+
+    {{ content | safe }}
+
+    {% include "layouts/footer.njk" %}
+    
+    {% block scripts %}
     <!-- <script src="/js/main.js"></script> -->
     <script>
       if (window.netlifyIdentity) {
