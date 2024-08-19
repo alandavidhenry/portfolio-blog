@@ -1,15 +1,18 @@
-// const stickySections = [...document.querySelectorAll(".sticky")];
+document.addEventListener('DOMContentLoaded', () => {
+  const portfolioCards = document.querySelectorAll('.portfolio-card')
 
-//       window.addEventListener("scroll", (e) => {
-//         for (let i = 0; i < stickySections.length; i++) {
-//           transform(stickySections[i]);
-//         }
-//       });
+  portfolioCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const description = card.querySelector('.description')
+      const fullDescription = card.querySelector('.full-description')
+      const url = card.querySelector('.url')
+      const github = card.querySelector('.github')
 
-//       function transform(section) {
-//         const offsetTop = section.parentElement.offsetTop;
-//         const scrollSection = section.querySelector(".horizontal-scroll");
-//         let percentage = ((window.scrollY - offsetTop) / window.innerHeight) * 100;
-//         percentage = percentage < 0 ? 0 : percentage > 300 ? 300 : percentage;
-//         scrollSection.style.transform = `translate3d(${-percentage}vw, 0, 0)`;
-//       }
+      description.classList.add('hidden')
+      fullDescription.classList.remove('hidden')
+      url.classList.remove('hidden')
+      github.classList.remove('hidden')
+      card.dataset.expanded = 'true'
+    })
+  })
+})
