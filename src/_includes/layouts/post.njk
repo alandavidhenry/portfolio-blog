@@ -1,0 +1,14 @@
+---
+layout: 'layouts/base.njk'
+---
+
+<main>
+  <article>
+    <h1>{{ title }}</h1>
+    <p>Published on {{ date | dateFilter }}</p>
+
+    <p><em>{{ description }}</em></p>
+
+    <div class="post-content">{{ content | safe }}</div>
+  </article>
+</main>

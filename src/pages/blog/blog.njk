@@ -1,11 +1,53 @@
 ---
-title: Title
-description: Description
 layout: 'layouts/base.njk'
-permalink: '/blog'
+permalink: '/blog/'
 ---
+
 <main>
-    <section>
-        <h1>Blog</h1>
-    </section>
+  <section>
+    <!-- <h1>Blog</h1> -->
+    <div class="container mb-12 mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for post in collections.blog %}
+        <article
+          class="border-solid border-4 border-custom-dark shadow-lg rounded-lg"
+        >
+          <a href="{{ post.url }}"
+            ><img
+              class="rounded-t"
+              src="https://picsum.photos/600/400"
+              alt="random image placeholder"
+          /></a>
+
+          <div class="px-8 py-4">
+            <h2
+              class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-2"
+            >
+              <a
+                class="text-custom-dark hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                href="{{ post.url }}"
+                >{{ post.data.title }}</a
+              >
+            </h2>
+            <p
+              class="text-xs text-gray-500 font-libreFranklin font-semibold uppercase mb-2"
+            >
+              {{ post.data.date | dateFilter }}
+            </p>
+            <p
+              class="full-description text-base font-libreFranklin text-gray-600 mb-3"
+            >
+              {{ post.data.description }}
+            </p>
+            <a
+              class="full-description text-sm font-libreFranklin text-gray-700 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black mb-4"
+              href="{{ post.url }}"
+              >Read more...</a
+            >
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </main>
