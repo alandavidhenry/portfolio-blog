@@ -8,18 +8,10 @@
       </h1>
       <nav>
         <ul class="space-x-10 lg:space-x-16">
-          {% if page.url == "/blog/" %}
+          {% if page.url == "/blog/" or page.url == "/cv/" or "posts/blog" in page.url %}
           <li class="inline-block">
             <a
               href="/"
-              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
-              >&#60; Back</a
-            >
-          </li>
-          {% elseif "posts/blog" in page.url %}
-          <li class="inline-block">
-            <a
-              href="/blog/"
               class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
               >&#60; Back</a
             >
@@ -30,6 +22,13 @@
               href="#portfolio"
               class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
               >Portfolio</a
+            >
+          </li>
+          <li class="inline-block">
+            <a
+              href="/cv/"
+              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
+              >CV</a
             >
           </li>
           <li class="inline-block">

@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/public': '/' })
   eleventyConfig.addPassthroughCopy('./src/admin')
   eleventyConfig.addPassthroughCopy('./src/posts')
+  eleventyConfig.addPassthroughCopy('./src/public')
 
   eleventyConfig.addWatchTarget('./src/css/')
 
