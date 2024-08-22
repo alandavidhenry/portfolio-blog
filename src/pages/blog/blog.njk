@@ -15,8 +15,8 @@ permalink: '/blog/'
           <a href="{{ post.url }}"
             ><img
               class="rounded-t"
-              src="https://picsum.photos/600/400"
-              alt="random image placeholder"
+              src="{{ post.data.featuredImage }}"
+              alt="Featured image for {{ post.data.title }}"
           /></a>
 
           <div class="px-8 py-4">
@@ -37,7 +37,7 @@ permalink: '/blog/'
             <p
               class="full-description text-base font-libreFranklin text-gray-600 mb-3"
             >
-              {{ post.data.description }}
+              {{ post.data.description | truncate(120) }}
             </p>
             <a
               class="full-description text-sm font-libreFranklin text-gray-700 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black mb-4"
