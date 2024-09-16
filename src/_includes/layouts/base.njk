@@ -62,34 +62,42 @@
     <meta name="twitter:image:alt" content="{{ imageAlt }}" />
 
     {% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+    />
+    <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
     <link href="/css/tailwind.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://identity.netlify.com" crossorigin />
     {% endblock %}
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="w-full h-full bg-custom-light text-custom-dark">
+    {% include "layouts/header.njk" %} {{ content | safe }} {% include
+    "layouts/footer.njk" %}
 
-    {% include "layouts/header.njk" %}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    {{ content | safe }}
-
-    {% include "layouts/footer.njk" %}
-    
     {% block scripts %}
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js" defer></script>
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/'
-            })
-          }
-        })
-      }
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('init', (user) => {
+            if (!user) {
+              window.netlifyIdentity.on('login', () => {
+                document.location.href = '/admin/'
+              })
+            }
+          })
+        }
+      })
     </script>
     {% endblock %}
   </body>
