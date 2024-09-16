@@ -1,26 +1,3 @@
-# Build settings
-[build]
-  publish = "dist"
-  command = "npm run build"
-  
-[[redirects]]
-  from = "https://www.alan-henry.co.uk/*"
-  to = "https://alan-henry.co.uk/:splat"
-  status = 301
-  force = true
-
-# Asset optimization
-[build.processing]
-  skip_processing = false
-[build.processing.css]
-  bundle = true
-  minify = true
-[build.processing.js]
-  bundle = true
-  minify = true
-[build.processing.images]
-  compress = true
-
 # Netlify Caching Configuration
 [[headers]]
   for = "/*"
@@ -31,3 +8,19 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Image optimization
+[build.processing.images]
+  compress = true
+
+# Redirect for www
+[[redirects]]
+  from = "https://www.alan-henry.co.uk/*"
+  to = "https://alan-henry.co.uk/:splat"
+  status = 301
+  force = true
+
+# Build settings
+[build]
+  publish = "dist"
+  command = "npm run build"
