@@ -134,7 +134,7 @@ Project Link: [https://github.com/alandavidhenry/portfolio-blog](https://github.
 ## Acknowledgments
 
 * [Img Shields](https://shields.io)
-* [Img Shields](https://github.com/othneildrew/Best-README-Template)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 
 
