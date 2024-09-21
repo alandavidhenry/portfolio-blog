@@ -2,7 +2,7 @@
 layout: layouts/post.njk
 title: Using focus-visible
 featuredImage: /images/uploads/focus-visible.gif
-date: 2024-07-30T16:32:00.000Z
+date: 2024-08-19T16:32:00.000Z
 description: focus-visible lets you show focus styles only when they are needed, using the same heuristic that the browser uses to decide whether to show the default focus indicator
 ---
 
