@@ -22,13 +22,21 @@ eleventyComputed:
   portfolioCards:
     - name: 'MOD Digital'
       technologies: 'HTML | CSS | JavaScript | Express | Redis | Keycloak | Playwright | OpenShift | OWASP ZAP'
-      description: "Defence Digital's portal for all their services. I ensured that the website correctly used the MOD Design system to create a uniform and accessible design across all the services. Authentication was provided by using a custom Keycloak instance hosted on OpenShift. End-to-end testing is carried out using Playwright with Axe integration for accessibility testing."
+      description: "Defence Digital's portal that links to all their services. I ensured that the website correctly uses the Government and Ministry of Defence Design system to create a uniform and accessible design across all the services.\n\n
+      The website was originally using Eleventy (a static site generator) but I changed it to use Express.js to implement server side rendering (SSR). This allowed me to render the pages on the server then password protect them by only serving password protected pages when a user is authenticated.\n\n
+      Authentication is provided by using the Redhat Single Sign On (SSO) instance hosted on OpenShift. This is a custom version of Keycloak that is provided by RedHat as part of Openshift.\n\n
+      End-to-end testing is carried out using Playwright with Axe integration for accessibility testing."
       url: 'https://www.digital.mod.uk'
       github: null
       image: 'digital-mod-uk.jpg'
     - name: 'This Portfolio & Blog'
       technologies: 'HTML | CSS | TailwindCSS | JavaScript | Eleventy | DecapCMS | Netlify'
-      description: 'My portfolio and blog website using 11ty and Decap CMS.'
+      description: "My portfolio and blog website using 11ty and Decap CMS. This project showcases my work, skills, and thoughts using modern web development technologies and practices.\n\n
+      I chose Eleventy as the static site generator for this project due to its flexibility and simplicity. Eleventy allows me to use the Nunjucks templating language (which I have experience of when working on the MOD Digital website) and create a fast, lightweight site with excellent performance out of the box.\n\n
+      For styling, I opted for TailwindCSS because it provides a utility-first approach allowing for rapid UI development and it is highly customisable.\n\n
+      To maintain code quality and consistency, I've implemented Prettier for consistent code formatting and ESLint along with custom configs and airbnb-base config.\n\n
+      I integrated DecapCMS headless CMS to manage my blog posts and portfolio content as it provides a user-friendly interface for content creation and editing, while keeping my content as part of my Git repository.\n\n
+      For deployment I opted for Netlify because it offers seamless integration with my Git workflow, built-in CI/CD pipeline that automatically builds and deploys my site when I push changes to GitHub, easy setup for custom domains and SSL certificates, excellent performance with a global CDN, integrates well with DecapCMS and allows sign in using Netlify Identity."
       url: 'http://alan-henry.co.uk'
       github: 'alandavidhenry/portfolio-blog'
       image: 'portfolio-blog.jpg'
@@ -149,7 +157,7 @@ eleventyComputed:
             <p
               class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
             >
-              {{ portfolioCard.description }}
+              {{ portfolioCard.description | replace("\n", '<br />') | safe }}
             </p>
             <p
               class="url text-base font-libreFranklin font-semibold mb-2 hidden"
