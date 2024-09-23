@@ -31,54 +31,55 @@ eleventyComputed:
       description: 'My portfolio and blog website using 11ty and Decap CMS.'
       url: 'http://alan-henry.co.uk'
       github: 'alandavidhenry/portfolio-blog'
-      image: ''
+      image: 'portfolio-blog.jpg'
     - name: 'Pike House Farm'
       technologies: 'HTML | CSS | Bootstrap | jQuery'
       description: "A website created to showcase a friend's farm located in the Pennine Hills near Manchester. They supply locally reared meat to nearby butchers and also offer meat packs for local customers."
       url: 'http://www.pikehousefarm.co.uk'
       github: 'alandavidhenry/pike-house-farm-website'
-      image: 'pike_house_farm_lg.jpg'
+      image: 'pike_house_farm.jpg'
     - name: 'With You With Me Capstone'
       technologies: 'HTML | CSS | TailwindCSS | Angular | Firebase'
       description: 'A website I created as my capstone project with With You With Me. I completed this course before being offered a role as a Frontend Developer contracted to the Ministry of Defence by With You With Me. It uses TailwindCSS to assist with the layout and the data is stored in a Firebase Realtime database.'
       url: 'https://wywm-capstone.web.app/'
       github: 'alandavidhenry/WYWM-Capstone'
+      image: 'wywm-capstone.jpg'
     - name: 'Studio Session Planner'
       technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
       description: 'A work-in-progress web-based app that is being developed to replace an Excel spreadsheet that was being used in by The Band of The Coldstream Guards to plan recording studio sessions. The Angular framework was chosen due to its ability to easily pass data between the many components needed for this project. The data is stored in a Firebase Firestore database..'
       url: 'https://studio-session-planner.web.app'
       github: 'alandavidhenry/studio-session-planner'
-      image: 'studio_session_planner_2_lg.jpg'
+      image: 'studio_session_planner.jpg'
     - name: 'The Goblin Store'
       technologies: 'HTML | CSS | Bootstrap | jQuery | Firebase'
       description: 'A website created during the Intermediate Web Development course offered by With You With Me. I completed this course before being offered a role as part of the training offered by With You With Me. It uses Bootstrap to assist with the layout and the data is stored in a Firebase Realtime database.'
       url: 'https://wywm-gobblin-store.web.app/index.html'
       github: 'alandavidhenry/WYWM-Intermediate-Web-Development'
-      image: 'goblin_store_2_lg.jpg'
+      image: 'goblin_store.jpg'
     - name: 'Aircraft Warehouse'
       technologies: 'HTML | CSS | Bootstrap | JavaScript'
       description: 'A sinple webpage created for the final assignment of the web developer module as part of the JHub Coding Scheme. This scheme aims to give serving personnel the opportunity to gain valuable coding and AI skills, whilst getting paid to do so, so that they might use these skills to enable an information advantage. The website used JavaScript to calculate the costs for different aircraft and their optional extras.'
       url: 'https://aircraft-warehouse.web.app'
       github: 'alandavidhenry/aircraft-warehouse'
-      image: 'aircraft_warehouse_lg.jpg'
+      image: 'aircraft_warehouse.jpg'
     - name: "Sergeants' Mess Booking App"
       technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
       description: " A work-in-progress web-based app that that can be used to book room and meals in the Sergeants' Mess in an Army barracks. The Angular framework was chosen due to its ability to easily pass data between the many components needed for this project. The data is stored in a Firebase Firestore database."
       url: 'https://mess-booking-app.web.app/dashboard'
       github: 'alandavidhenry/mess-booking-app'
-      image: 'mess_booking_app_lg.jpg'
+      image: 'mess_booking_app.jpg'
     - name: 'Minimalist Weather App (Using JS)'
       technologies: 'HTML | CSS | JavaScript'
       description: 'Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have tried to keep this as simple as possible and used only JavaScript linked in the HTML file. I used the fetch function to get the json data from the weather API.'
       url: 'https://alandavidhenry.github.io/Minimalist-Weather-Page-PlainJS'
       github: 'alandavidhenry/Minimalist-Weather-Page-PlainJS'
-      image: 'simple_weather_ex_lg.jpg'
+      image: 'simple_weather_app.jpg'
     - name: 'Minimalist Weather App (Using Express & Node)'
       technologies: 'HTML | CSS | JavaScript | Express | Node.js'
       description: 'Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have used the Express Generator to create the basic template then built on that. I used the simple response package to get the json data from the weather API.'
       url: null
       github: 'alandavidhenry/Minimalist-Weather-Page-Express'
-      image: 'simple_weather_ex_lg.jpg'
+      image: 'simple_weather_app.jpg'
 ---
 
 <main>
@@ -130,6 +131,11 @@ eleventyComputed:
           data-expanded="false"
         >
           <div class="p-4">
+            <img
+              class="w-full mb-6"
+              src="/images/{{ portfolioCard.image }}"
+              alt="{{ portfolioCard.name }}"
+            />
             <h3
               class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
             >
@@ -148,13 +154,15 @@ eleventyComputed:
             <p
               class="url text-base font-libreFranklin font-semibold mb-2 hidden"
             >
-            <span class="font-normal text-gray-200">Link: </span>
+              {% if portfolioCard.url %}
+              <span class="font-normal text-gray-200">Link: </span>
               <a
                 class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
                 href="{{ portfolioCard.url }}"
                 >{{ portfolioCard.url }}</a
               >
             </p>
+            {% endif %}
             <p
               class="github text-base font-libreFranklin font-semibold mb-2 hidden"
             >
@@ -172,16 +180,9 @@ eleventyComputed:
             >
               {{ portfolioCard.technologies }}
             </p>
-          </div>
-          <div class="extra-content hidden p-4 bg-gray-700">
-            <!-- Add your extra elements here -->
-            <p class="text-base font-libreFranklin text-gray-200">
-              Additional details about the project...
-            </p>
             <a
-              href="#"
-              class="text-blue-400 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-              >View Project</a
+              class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
+              >Click for more...</a
             >
           </div>
         </div>
