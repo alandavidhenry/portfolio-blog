@@ -9,18 +9,19 @@ description: Hooks were added to React in version 16.8. In this article I will
 ---
 ## Commonly used Reat hooks:
 
-- useState
-- useEffect
-- useContext
-- useReducer
-- useCallback
-- useMemo
-- useRef
-- useImperativeHandle
-- useLayoutEffect
-- useDebugValue
+* useState
+* useEffect
+* useContext
+* useReducer
+* useCallback
+* useMemo
+* useRef
+* useImperativeHandle
+* useLayoutEffect
+* useDebugValue
 
 ## useState
+
 `useState` is used to add state to functional components. It returns an array with two elements: the current state value and a function to update it.
 
 ```
@@ -44,6 +45,7 @@ function Counter() {
 ```
 
 ## useEffect
+
 `useEffect` is used for side effects in functional components. It runs after every render and can be used for data fetching, subscriptions, or manually changing the DOM.
 
 ```
@@ -71,6 +73,7 @@ function DataFetcher() {
 ```
 
 ## useContext
+
 `useContext` is used to consume context in functional components. It allows you to subscribe to React context without introducing nesting.
 
 ```
@@ -79,20 +82,8 @@ const value = useContext(MyContext);
 
 A context is created with `React.createContext('light')`, setting 'light' as the default value. The current theme value is accessed in the `ThemedButton` component and the component is conditionally styled. The button is styled based on a theme defined higher up in the component tree without passing props through every level.
 
-```
-const ThemeContext = React.createContext('light');
-
-function ThemedButton() {
-  const theme = useContext(ThemeContext);
-  return (
-    <button style={{ background: theme === 'light' ? '#fff' : '#000' }}>
-      I'm styled based on the theme context
-    </button>
-  );
-}
-```
-
 ## useReducer
+
 `useReducer` is an alternative to `useState` for managing complex state logic. It's often preferable to `useState` when you have complex state logic that involves multiple sub-values.
 
 ```
@@ -131,6 +122,7 @@ function TodoList() {
 ```
 
 ## useCallback
+
 `useCallback` returns a memoized version of the callback that only changes if one of the dependencies has changed. It's useful for optimizing performance by preventing unnecessary re-renders of child components.
 
 ```
@@ -160,6 +152,7 @@ function ParentComponent({ value }) {
 ```
 
 ## useMemo
+
 `useMemo` is used to memoize expensive computations so that they are only re-run when dependencies change. It can help optimize performance by avoiding unnecessary calculations.
 
 ```
@@ -183,6 +176,7 @@ function FilteredList({ items, filterCriteria }) {
 ```
 
 ## useRef
+
 `useRef` returns a mutable ref object whose `.current` property is initialized to the passed argument. It's commonly used to access DOM elements directly or to persist values across renders without causing re-renders.
 
 ```
@@ -209,6 +203,7 @@ function TextInputWithFocusButton() {
 ```
 
 ## useImperativeHandle
+
 `useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. It's used with `forwardRef` to customize the exposed ref.
 
 ```
@@ -238,6 +233,7 @@ const FancyInput = forwardRef((props, ref) => {
 ```
 
 ## useLayoutEffect
+
 `useLayoutEffect` is similar to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render.
 
 ```
@@ -273,6 +269,7 @@ function Tooltip({ children, tooltip }) {
 ```
 
 ## useDebugValue
+
 `useDebugValue` can be used to display a label for custom hooks in React DevTools. It's primarily for debugging purposes.
 
 ```
