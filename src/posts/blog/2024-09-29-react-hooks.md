@@ -88,7 +88,7 @@ const ThemeContext = React.createContext('light');
 function ThemedButton() {
   const theme = useContext(ThemeContext);
   return (
-    <button style={{ background: theme === 'light' ? '#fff' : '#000' }}>
+    <button style={&#123; background: theme === 'light' ? '#fff' : '#000' &#125;}>
       I'm styled based on the theme context!
     </button>
   );
@@ -273,7 +273,7 @@ function Tooltip({ children, tooltip }) {
   return (
     <>
       <div ref={ref}>{children}</div>
-      <div style={{ position: 'absolute', left: position.x, top: position.y }}>
+      <div style={&#123; position: 'absolute', left: position.x, top: position.y &#125;}>
         {tooltip}
       </div>
     </>
