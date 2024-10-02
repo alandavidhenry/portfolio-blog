@@ -10,11 +10,11 @@ permalink: '/blog/'
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for post in collections.blog | reverse %}
         <article
-          class="border-solid border-4 border-custom-dark shadow-lg rounded-lg hover:bg-white transition hover:scale-[101%]"
+          class="border-solid border-4 border-custom-dark shadow-lg"
         >
           <a href="{{ post.url }}"
             ><img
-              class="rounded-t"
+              class="border-b-4 border-custom-dark"
               src="{{ post.data.featuredImage }}"
               alt="Featured image for {{ post.data.title }}"
           /></a>
