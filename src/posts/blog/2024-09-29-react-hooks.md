@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: React Hooks
-featuredImage: https://upload.wikimedia.org/wikipedia/commons/1/18/React_Native_Logo.png
+featuredImage: /images/uploads/react.jpg
 date: 2024-09-29T14:07:00.000Z
 description: Hooks were added to React in version 16.8. In this article I will
   look at each type of hook and give some examples of how and when they should

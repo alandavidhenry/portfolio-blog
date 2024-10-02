@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: Useful Git commands
-featuredImage: /images/uploads/git_logo.png
+featuredImage: /images/uploads/git.jpg
 date: 2024-03-10T16:34:00.000Z
 description: Some useful commands when using Git and GitHub
 ---

@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: Var, Let, and Const in JavaScript
-featuredImage: https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png
+featuredImage: /images/uploads/js.jpg
 date: 2023-11-01T12:49:00.000Z
 description: ES6 introduced the let and const keywords. In this article I am
   going to explain the differences and when they should be used.

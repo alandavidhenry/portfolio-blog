@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: The SOLID Principles
-featuredImage: https://i0.wp.com/i.postimg.cc/zB23GX8D/Solid-principles.png?w=1300&ssl=1
+featuredImage: /images/uploads/solid.jpg
 date: 2023-12-10T09:30:00.000Z
 description: SOLID is a set of five object-oriented design principles aimed at
   making software designs more understandable, flexible, and maintainable.
