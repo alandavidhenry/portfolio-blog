@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://alan-henry.co.uk/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/cv/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/blog/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/public/20240821-CV_Alan_Henry.pdf</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/posts/blog/2024-09-29-react-hooks/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/posts/blog/2024-09-03-jamstack/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/posts/blog/2024-08-19-second-post/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/posts/blog/2024-03-10-first-post/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/posts/blog/2024-10-01-the-solid-principles/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://alan-henry.co.uk/posts/blog/2024-09-29-var-let-and-const-in-javascript/</loc>
+  <lastmod>2024-10-02T16:45:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
