@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-TXPWRS5R')
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -37,7 +51,7 @@
     <meta name="twitter:description" content="{{ description }}" />
     <meta name="twitter:image" content="{{ image }}" />
     <meta name="twitter:image:alt" content="{{ imageAlt }}" />
-    <meta name="generator" content="{{ eleventy.generator }}">
+    <meta name="generator" content="{{ eleventy.generator }}" />
     <link rel="canonical" href="https://alan-henry.co.uk" />
 
     {% block stylesheets %}
@@ -58,6 +72,16 @@
     {% endblock %}
   </head>
   <body class="w-full h-full bg-custom-light text-custom-dark">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TXPWRS5R"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {% include "layouts/header.njk" %} {{ content | safe }} {% include
     "layouts/footer.njk" %}
 
