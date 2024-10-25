@@ -7,7 +7,6 @@ description: The Cloud Resume Challenge is a hands-on project designed to help
   you bridge the gap from cloud certification to cloud job. It incorporates many
   of the skills that real cloud and DevOps engineers use in their daily work.
 ---
-# The Cloud Resume Challenge - Azure
 
 > The [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/azure/) is a hands-on project designed to help you bridge the gap from cloud certification to cloud job. It incorporates many of the skills that real cloud and DevOps engineers use in their daily work.
 
