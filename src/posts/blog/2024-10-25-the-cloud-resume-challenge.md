@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: The Cloud Resume Challenge
-featuredImage: images/uploads/the-cloud-resume-challenge.jpg
+featuredImage: images/uploads/js.jpg
 date: 2024-10-25T10:40:00.000Z
 description: The Cloud Resume Challenge is a hands-on project designed to help
   you bridge the gap from cloud certification to cloud job. It incorporates many
