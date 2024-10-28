@@ -1,12 +1,26 @@
 ---
-title: Alan Henry - Frontend Developer
-description: With 13 years of military experience and a recent transition to IT, I bring strong problem-solving, goal-oriented, and teamwork skills to my role as a frontend developer.
+title: Alan Henry - DevOps Engineer
+description: Analytical and self-driven DevOps Engineer, bringing expertise in automation, scripting, cloud computing, and CI/CD pipelines. Passionate about creating robust cloud solutions and optimising development and deployment processes. Excited to be at the forefront of advancements in IT by continuously expanding my skill set.
 layout: layouts/base.njk
 image: /images/portfolio-blog.jpg
 imageAlt: Alan Henry's developer portfolio and blog website
 canonicalUrl: https://www.alan-henry.co.uk
 eleventyComputed:
-  portfolioCards:
+  devOpsPortfolioCards:
+    - name: ''
+      technologies: 'HTML | CSS | JavaScript | Express | Redis | Keycloak | Playwright | OpenShift | OWASP ZAP'
+      description: ""
+      url: 'https://www.'
+      github: null
+      image: '.jpg'
+  cloudBasedPortfolioCards:
+    - name: 'Cloud Resume Challenge'
+      technologies: 'HTML | CSS | JavaScript | Python | Azure | CosmoDB | Bicep | Terraform | GitHub Actions'
+      description: "The Cloud Resume Challenge is a hands-on project designed to help you bridge the gap from cloud certification to cloud job. It incorporates many of the skills that real cloud and DevOps engineers use in their daily work."
+      url: 'https://www.cloudresumechallenge.site'
+      github: 'alandavidhenry/cloud-resume-challenge'
+      image: 'the-cloud-resume-challenge.jpg'
+  frontEndPortfolioCards:
     - name: 'MOD Digital'
       technologies: 'HTML | CSS | JavaScript | Express | Redis | Keycloak | Playwright | OpenShift | OWASP ZAP'
       description: "Defence Digital's portal that links to all their services. I ensured that the website correctly uses the Government and Ministry of Defence Design system to create a uniform and accessible design across all the services.\n\n
@@ -63,12 +77,6 @@ eleventyComputed:
       url: 'https://mess-booking-app.web.app/dashboard'
       github: 'alandavidhenry/mess-booking-app'
       image: 'mess_booking_app.jpg'
-    - name: 'Minimalist Weather App (Using JS)'
-      technologies: 'HTML | CSS | JavaScript'
-      description: 'Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have tried to keep this as simple as possible and used only JavaScript linked in the HTML file. I used the fetch function to get the json data from the weather API.'
-      url: 'https://alandavidhenry.github.io/Minimalist-Weather-Page-PlainJS'
-      github: 'alandavidhenry/Minimalist-Weather-Page-PlainJS'
-      image: 'simple_weather_app.jpg'
     - name: 'Minimalist Weather App (Using Express & Node)'
       technologies: 'HTML | CSS | JavaScript | Express | Node.js'
       description: 'Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have used the Express Generator to create the basic template then built on that. I used the simple response package to get the json data from the weather API.'
@@ -87,16 +95,18 @@ eleventyComputed:
           <h2
             class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-lekton font-semibold align-bottom"
           >
-            Frontend Developer
+            DevOps Engineer
           </h2>
         </div>
         <div class="md:w-6/12 lg:w-5/12">
           <h3
             class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-4"
           >
-            With 13 years of military experience and a recent transition to IT,
-            I bring strong problem-solving, goal-oriented, and teamwork skills
-            to my role as a frontend developer.
+            Analytical and self-driven DevOps Engineer, bringing expertise in
+            automation, scripting, cloud computing, and CI/CD pipelines.
+            Passionate about creating robust cloud solutions and optimising
+            development and deployment processes. Excited to be at the forefront
+            of advancements in IT by continuously expanding my skill set.
           </h3>
           <p
             class="text-base sm:text-lg md:text-xl text-gray-600 font-libreFranklin leading-relaxed"
@@ -120,68 +130,216 @@ eleventyComputed:
       </h2>
 
       <div class="container mb-12 mx-auto">
-        {% for portfolioCard in portfolioCards %}
-        <div
-          class="portfolio-card mb-8 lg:ml-80 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
-          data-expanded="false"
+        <!-- DevOps -->
+        <!-- <h3
+          class="text-xl sm:text-2xl md:text-4xl font-libreFranklin font-semibold mb-4 lg:mb-8"
         >
-          <div class="p-4">
-            <img
-              class="w-full mb-6"
-              src="/images/{{ portfolioCard.image }}"
-              alt="{{ portfolioCard.name }}"
-            />
-            <h3
-              class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
-            >
-              {{ portfolioCard.name }}
-            </h3>
-            <p
-              class="description text-base font-libreFranklin text-gray-200 mb-2"
-            >
-              {{ portfolioCard.description | truncate(150) }}
-            </p>
-            <p
-              class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
-            >
-              {{ portfolioCard.description | replace("\n", '<br />') | safe }}
-            </p>
-            <p
-              class="url text-base font-libreFranklin font-semibold mb-2 hidden"
-            >
-              {% if portfolioCard.url %}
-              <span class="font-normal text-gray-200">Link: </span>
-              <a
-                class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                href="{{ portfolioCard.url }}"
-                >{{ portfolioCard.url }}</a
+          DevOps
+        </h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {% for portfolioCard in cloudBasedPortfolioCards %}
+          <div
+            class="portfolio-card mb-8 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
+            data-expanded="false"
+          >
+            <div class="p-4">
+              <img
+                class="w-full mb-6"
+                src="/images/{{ portfolioCard.image }}"
+                alt="{{ portfolioCard.name }}"
+              />
+              <h4
+                class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
               >
-            </p>
-            {% endif %}
-            <p
-              class="github text-base font-libreFranklin font-semibold mb-2 hidden"
-            >
-              {% if portfolioCard.github %}
-              <span class="font-normal text-gray-200">GitHub: </span>
-              <a
-                class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                href="https://www.github.com/{{ portfolioCard.github }}"
-                >{{ portfolioCard.github }}</a
+                {{ portfolioCard.name }}
+              </h4>
+              <p
+                class="description text-base font-libreFranklin text-gray-200 mb-2"
               >
+                {{ portfolioCard.description | truncate(150) }}
+              </p>
+              <p
+                class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
+              >
+                {{ portfolioCard.description | replace("\n", '<br />') | safe }}
+              </p>
+              <p
+                class="url text-base font-libreFranklin font-semibold mb-2 hidden"
+              >
+                {% if portfolioCard.url %}
+                <span class="font-normal text-gray-200">Link: </span>
+                <a
+                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                  href="{{ portfolioCard.url }}"
+                  >{{ portfolioCard.url }}</a
+                >
+              </p>
               {% endif %}
-            </p>
-            <p
-              class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
-            >
-              {{ portfolioCard.technologies }}
-            </p>
-            <a
-              class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
-              >Click for more...</a
-            >
+              <p
+                class="github text-base font-libreFranklin font-semibold mb-2 hidden"
+              >
+                {% if portfolioCard.github %}
+                <span class="font-normal text-gray-200">GitHub: </span>
+                <a
+                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                  href="https://www.github.com/{{ portfolioCard.github }}"
+                  >{{ portfolioCard.github }}</a
+                >
+                {% endif %}
+              </p>
+              <p
+                class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
+              >
+                {{ portfolioCard.technologies }}
+              </p>
+              <a
+                class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
+                >Click for more...</a
+              >
+            </div>
           </div>
+          {% endfor %}
+        </div> -->
+        <!-- Cloud-based -->
+        <h3
+          class="text-xl sm:text-2xl md:text-4xl font-libreFranklin font-semibold mb-4 lg:mb-8"
+        >
+          Cloud-based
+        </h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {% for portfolioCard in cloudBasedPortfolioCards %}
+          <div
+            class="portfolio-card mb-8 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
+            data-expanded="false"
+          >
+            <div class="p-4">
+              <img
+                class="w-full mb-6"
+                src="/images/{{ portfolioCard.image }}"
+                alt="{{ portfolioCard.name }}"
+              />
+              <h4
+                class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
+              >
+                {{ portfolioCard.name }}
+              </h4>
+              <p
+                class="description text-base font-libreFranklin text-gray-200 mb-2"
+              >
+                {{ portfolioCard.description | truncate(150) }}
+              </p>
+              <p
+                class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
+              >
+                {{ portfolioCard.description | replace("\n", '<br />') | safe }}
+              </p>
+              <p
+                class="url text-base font-libreFranklin font-semibold mb-2 hidden"
+              >
+                {% if portfolioCard.url %}
+                <span class="font-normal text-gray-200">Link: </span>
+                <a
+                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                  href="{{ portfolioCard.url }}"
+                  >{{ portfolioCard.url }}</a
+                >
+              </p>
+              {% endif %}
+              <p
+                class="github text-base font-libreFranklin font-semibold mb-2 hidden"
+              >
+                {% if portfolioCard.github %}
+                <span class="font-normal text-gray-200">GitHub: </span>
+                <a
+                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                  href="https://www.github.com/{{ portfolioCard.github }}"
+                  >{{ portfolioCard.github }}</a
+                >
+                {% endif %}
+              </p>
+              <p
+                class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
+              >
+                {{ portfolioCard.technologies }}
+              </p>
+              <a
+                class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
+                >Click for more...</a
+              >
+            </div>
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
+        <!-- Front end -->
+        <h3
+          class="text-xl sm:text-2xl md:text-4xl font-libreFranklin font-semibold mb-4 lg:mb-8"
+        >
+          Front end
+        </h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {% for portfolioCard in frontEndPortfolioCards %}
+          <div
+            class="portfolio-card mb-8 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
+            data-expanded="false"
+          >
+            <div class="p-4">
+              <img
+                class="w-full mb-6"
+                src="/images/{{ portfolioCard.image }}"
+                alt="{{ portfolioCard.name }}"
+              />
+              <h4
+                class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
+              >
+                {{ portfolioCard.name }}
+              </h4>
+              <p
+                class="description text-base font-libreFranklin text-gray-200 mb-2"
+              >
+                {{ portfolioCard.description | truncate(150) }}
+              </p>
+              <p
+                class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
+              >
+                {{ portfolioCard.description | replace("\n", '<br />') | safe }}
+              </p>
+              <p
+                class="url text-base font-libreFranklin font-semibold mb-2 hidden"
+              >
+                {% if portfolioCard.url %}
+                <span class="font-normal text-gray-200">Link: </span>
+                <a
+                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                  href="{{ portfolioCard.url }}"
+                  >{{ portfolioCard.url }}</a
+                >
+              </p>
+              {% endif %}
+              <p
+                class="github text-base font-libreFranklin font-semibold mb-2 hidden"
+              >
+                {% if portfolioCard.github %}
+                <span class="font-normal text-gray-200">GitHub: </span>
+                <a
+                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
+                  href="https://www.github.com/{{ portfolioCard.github }}"
+                  >{{ portfolioCard.github }}</a
+                >
+                {% endif %}
+              </p>
+              <p
+                class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
+              >
+                {{ portfolioCard.technologies }}
+              </p>
+              <a
+                class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
+                >Click for more...</a
+              >
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </section>
