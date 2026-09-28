@@ -1,0 +1,50 @@
+{
+  "name": "Alan Henry",
+  "role": "DevOps Engineer",
+  "location": "United Kingdom",
+  "cv": "/public/202410021-DevOpsCV_Alan_Henry.pdf",
+  "links": {
+    "github": "https://github.com/alandavidhenry",
+    "linkedin": "https://www.linkedin.com/in/alandavidhenry"
+  },
+  "record": [
+    {
+      "period": "2024 – Present",
+      "title": "Senior DevOps Engineer",
+      "org": "Medicines & Healthcare products Regulatory Agency (MHRA)"
+    },
+    {
+      "period": "2023 – 2024",
+      "title": "DevOps Engineer",
+      "org": "Ministry of Defence (MOD)"
+    },
+    {
+      "period": "2010 – 2023",
+      "title": "Team Leader",
+      "org": "British Army"
+    },
+    {
+      "period": "2002 – 2006",
+      "title": "BEng (Hons) Automotive Engineering",
+      "org": "University of Huddersfield"
+    }
+  ],
+  "certifications": [
+    {
+      "date": "2026",
+      "name": "AZ-305: Microsoft Azure Solutions Architect"
+    },
+    {
+      "date": "2025",
+      "name": "AZ-400: Microsoft Azure DevOps Engineer Expert"
+    },
+    {
+      "date": "2024",
+      "name": "AZ-104: Microsoft Azure Administrator"
+    },
+    {
+      "date": "2023",
+      "name": "CompTIA Network+"
+    }
+  ]
+}

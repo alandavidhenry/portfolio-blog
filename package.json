@@ -1,7 +1,7 @@
 {
   "name": "portfolio-blog",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Portfolio website and blog using Eleventy, TailwindCSS and Decap CMS",
   "main": "index.js",
   "scripts": {
     "start:eleventy": "eleventy --serve",

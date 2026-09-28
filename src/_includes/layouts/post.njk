@@ -2,40 +2,118 @@
 layout: 'layouts/base.njk'
 ---
 
-<main>
-  <section>
-    <div class="container w-full lg:w-2/3 mb-24 mx-auto px-4">
-      <article>
-        <div class="mb-4 lg:mb-10">
-          <img
-            class="mb-8 md:mb-10 border-solid border-4 border-custom-dark shadow-lg"
-            src="{{ featuredImage }}"
-            alt="Featured image for {{ title }}"
-          />
-          <h2
-            class="mb-4 md:mb-6 text-4xl md:text-6xl xl:text-7xl font-libreFranklin font-semibold"
-          >
-            {{ title }}
-          </h2>
-        </div>
-        <p
-          class="text-sm md:text-base text-gray-500 font-libreFranklin font-semibold uppercase mb-2"
-        >
-          Published on {{ date | dateFilter }}
-        </p>
+{%- set previousPost = collections.blog | getPreviousCollectionItem(page) -%}
+{%- set nextPost = collections.blog | getNextCollectionItem(page) -%}
 
-        <p
-          class="post-content prose prose-lg full-description text-base font-libreFranklin font-semibold text-gray-700 mb-3"
+<article>
+  <header class="graph-paper">
+    <div class="wrap pb-10 pt-8 lg:pt-12">
+      <div class="doc-label">
+        <a href="/blog/" class="transition-colors hover:text-ink"
+          ><span aria-hidden="true">←</span> Back to All Field Notes</a
         >
+      </div>
+      <h1
+        class="display mt-8 max-w-5xl text-[3.25rem] leading-[0.88] sm:text-7xl lg:mt-12 lg:text-8xl xl:text-[7.5rem]"
+      >
+        {{ title }}
+      </h1>
+      <dl
+        class="label mt-10 grid grid-cols-1 border-2 border-ink bg-sheet md:grid-cols-3"
+      >
+        <div class="border-b border-hair p-3.5 md:border-b-0 md:border-r">
+          <dt class="text-mute">Published</dt>
+          <dd class="mt-1 font-medium">
+            <time datetime="{{ date | isoDate }}">{{ date | dateFilter }}</time>
+          </dd>
+        </div>
+        <div class="border-b border-hair p-3.5 md:border-b-0 md:border-r">
+          <dt class="text-mute">Reading time</dt>
+          <dd class="mt-1 font-medium">{{ content | readingTime }} min</dd>
+        </div>
+        <div class="p-3.5">
+          <dt class="text-mute">Author</dt>
+          <dd class="mt-1 font-medium">{{ site.name }}</dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="wrap grid gap-10 pb-20 lg:grid-cols-12 lg:gap-6">
+    <aside class="lg:col-span-3">
+      <div class="lg:sticky lg:top-8">
+        <p class="label flex items-center gap-2">
+          <span class="size-2 bg-signal" aria-hidden="true"></span> Abstract
+        </p>
+        <p class="mt-3 text-lg font-medium leading-snug lg:text-base">
           {{ description }}
         </p>
-
-        <div
-          class="post-content prose prose-lg text-base text-custom-dark font-libreFranklin leading-relaxed"
+        <a href="/blog/" class="label link mt-6 hidden w-fit lg:inline-block"
+          ><span aria-hidden="true">←</span> All field notes</a
         >
-          {{ content | safe }}
-        </div>
-      </article>
+      </div>
+    </aside>
+
+    <div class="min-w-0 lg:col-span-9 xl:col-span-7">
+      {% if featuredImage %}
+      <figure>
+        <img
+          class="w-full border-2 border-ink bg-white"
+          src="{{ featuredImage }}"
+          alt=""
+          decoding="async"
+        />
+        <figcaption class="label mt-2.5 text-mute">Fig. 1 — {{ title }}</figcaption>
+      </figure>
+      {% endif %}
+
+      <div class="prose prose-lg mt-10 max-w-none">{{ content | safe }}</div>
+
+      <p class="label mt-14 flex items-center gap-3 text-mute">
+        <span class="h-0.5 flex-1 bg-ink" aria-hidden="true"></span>
+        End of entry
+        <span class="h-0.5 w-8 bg-ink" aria-hidden="true"></span>
+      </p>
     </div>
-  </section>
-</main>
+  </div>
+
+  <nav class="wrap pb-24" aria-label="More field notes">
+    <div class="grid border-2 border-ink bg-sheet md:grid-cols-2">
+      {% if previousPost %}
+      <a
+        href="{{ previousPost.url }}"
+        class="group flex flex-col gap-3 p-5 transition-colors hover:bg-white md:p-6"
+      >
+        <span class="label text-mute"
+          ><span aria-hidden="true">←</span> Previous entry</span
+        >
+        <span
+          class="font-display text-3xl font-bold uppercase leading-none tracking-[0.01em] group-hover:text-signal"
+          >{{ previousPost.data.title }}</span
+        >
+      </a>
+      {% else %}
+      <p class="label p-5 text-mute md:p-6">First entry</p>
+      {% endif %} {% if nextPost %}
+      <a
+        href="{{ nextPost.url }}"
+        class="group flex flex-col gap-3 border-t-2 border-ink p-5 text-right transition-colors hover:bg-white md:border-l-2 md:border-t-0 md:p-6"
+      >
+        <span class="label text-mute"
+          >Next entry <span aria-hidden="true">→</span></span
+        >
+        <span
+          class="font-display text-3xl font-bold uppercase leading-none tracking-[0.01em] group-hover:text-signal"
+          >{{ nextPost.data.title }}</span
+        >
+      </a>
+      {% else %}
+      <p
+        class="label border-t-2 border-ink p-5 text-mute md:border-l-2 md:border-t-0 md:p-6 md:text-right"
+      >
+        Latest entry
+      </p>
+      {% endif %}
+    </div>
+  </nav>
+</article>

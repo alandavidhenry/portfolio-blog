@@ -1,20 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const portfolioCards = document.querySelectorAll('.portfolio-card')
+  // Add a toolbar with the language and a copy button to code blocks in posts
+  const codeBlocks = document.querySelectorAll('.prose pre > code')
 
-  portfolioCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const description = card.querySelector('.description')
-      const fullDescription = card.querySelector('.full-description')
-      const url = card.querySelector('.url')
-      const github = card.querySelector('.github')
-      const more = card.querySelector('.more')
+  codeBlocks.forEach((code) => {
+    const pre = code.parentElement
+    const match = code.className.match(/language-(\w+)/)
 
-      description.classList.add('hidden')
-      fullDescription.classList.remove('hidden')
-      url.classList.remove('hidden')
-      github.classList.remove('hidden')
-      more.classList.add('hidden')
-      card.dataset.expanded = 'true'
+    const toolbar = document.createElement('div')
+    toolbar.className = 'code-toolbar'
+
+    const language = document.createElement('span')
+    language.textContent = match ? match[1] : 'Code'
+
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.textContent = 'Copy'
+    button.setAttribute('aria-live', 'polite')
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent)
+        button.textContent = 'Copied'
+      } catch (error) {
+        button.textContent = 'Copy failed'
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy'
+      }, 2000)
     })
+
+    toolbar.append(language, button)
+    pre.before(toolbar)
   })
 })

@@ -1,1 +1,41 @@
-<footer></footer>
+<div class="hazard h-3.5" aria-hidden="true"></div>
+<footer class="bg-ink text-paper">
+  <div
+    class="wrap flex flex-col gap-10 py-12 md:flex-row md:items-end md:justify-between"
+  >
+    <nav aria-label="Elsewhere">
+      <ul class="label border-t border-char">
+        <li class="border-b border-char">
+          <a
+            href="{{ site.links.github }}"
+            class="flex justify-between py-3 transition-colors hover:text-signal"
+            >GitHub <span aria-hidden="true">↗</span></a
+          >
+        </li>
+        <li class="border-b border-char">
+          <a
+            href="{{ site.links.linkedin }}"
+            class="flex justify-between py-3 transition-colors hover:text-signal"
+            >LinkedIn <span aria-hidden="true">↗</span></a
+          >
+        </li>
+        <li class="border-b border-char">
+          <a
+            href="{{ site.cv }}"
+            class="flex justify-between py-3 transition-colors hover:text-signal"
+            download
+            >CV (PDF) <span aria-hidden="true">↓</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="label space-y-1.5 text-ash md:text-right">
+      <p>© {{ build.year }} {{ site.name }}</p>
+      <p>
+        <a href="#top" class="text-paper transition-colors hover:text-signal"
+          >Back to top <span aria-hidden="true">↑</span></a
+        >
+      </p>
+    </div>
+  </div>
+</footer>

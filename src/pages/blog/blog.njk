@@ -1,53 +1,82 @@
 ---
 layout: 'layouts/base.njk'
 permalink: '/blog/'
+title: Field notes - Alan Henry
+description: Articles on cloud, DevOps and front-end development by Alan Henry.
+eleventyImport:
+  collections: ['blog']
 ---
 
-<main>
-  <section>
-    <!-- <h1>Blog</h1> -->
-    <div class="container mb-12 mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {% for post in collections.blog | reverse %}
-        <article
-          class="border-solid border-4 border-custom-dark shadow-lg"
-        >
-          <a href="{{ post.url }}"
-            ><img
-              class="border-b-4 border-custom-dark"
-              src="{{ post.data.featuredImage }}"
-              alt="Featured image for {{ post.data.title }}"
-          /></a>
+{%- set posts = collections.blog | reverse -%}
 
-          <div class="px-8 py-4">
-            <h2
-              class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-2"
-            >
-              <a
-                class="text-custom-dark hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                href="{{ post.url }}"
-                >{{ post.data.title }}</a
-              >
-            </h2>
-            <p
-              class="text-xs text-gray-500 font-libreFranklin font-semibold uppercase mb-2"
-            >
-              {{ post.data.date | dateFilter }}
-            </p>
-            <p
-              class="full-description text-base font-libreFranklin text-gray-600 mb-3"
-            >
-              {{ post.data.description | truncate(120) }}
-            </p>
-            <a
-              class="full-description text-sm font-libreFranklin text-gray-700 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black mb-4"
-              href="{{ post.url }}"
-              >Read more...</a
-            >
-          </div>
-        </article>
-        {% endfor %}
-      </div>
+<section class="graph-paper">
+  <div class="wrap pb-12 pt-8 lg:pb-16 lg:pt-12">
+    <h1
+      class="display mt-8 text-[4.5rem] sm:text-[7rem] lg:mt-12 lg:text-[9rem] xl:text-[10rem]"
+    >
+      Field notes<span class="text-signal">.</span>
+    </h1>
+    <p class="mt-6 max-w-md leading-relaxed text-mute lg:mt-8">
+      Articles on cloud, DevOps and front-end development. Newest entries
+      first.
+    </p>
+  </div>
+</section>
+
+<section class="wrap pb-24" aria-label="All entries">
+  <div class="border-2 border-ink bg-sheet">
+    <div
+      class="label hidden grid-cols-12 gap-6 bg-ink px-6 py-2 text-paper md:grid"
+      aria-hidden="true"
+    >
+      <span class="col-span-2">Date</span>
+      <span class="col-span-7">Entry</span>
+      <span class="col-span-3">Figure</span>
     </div>
-  </section>
-</main>
+    <ol>
+      {% for post in posts %}
+      <li
+        class="register-row group relative grid gap-4 border-t border-hair p-5 transition-colors first:border-t-0 hover:bg-white md:grid-cols-12 md:gap-6 md:p-6"
+      >
+        <div
+          class="label flex flex-wrap gap-x-4 gap-y-1 text-mute md:col-span-2 md:flex-col"
+        >
+          <time datetime="{{ post.date | isoDate }}"
+            >{{ post.date | isoDate }}</time
+          >
+          <span>{{ post.content | readingTime }} min read</span>
+        </div>
+        <div class="flex flex-col gap-3 md:col-span-7">
+          <h2
+            class="font-display text-4xl font-bold uppercase leading-[0.9] tracking-[0.01em] lg:text-5xl"
+          >
+            <a href="{{ post.url }}" class="stretched-link">{{ post.data.title }}</a>
+          </h2>
+          <p class="line-clamp-3 max-w-2xl leading-relaxed text-ink/80">
+            {{ post.data.description }}
+          </p>
+          <span
+            class="label mt-auto inline-flex items-center gap-2 pt-2 transition-colors group-hover:text-signal"
+            aria-hidden="true"
+            >Read entry
+            <span class="transition-transform group-hover:translate-x-1"
+              >→</span
+            ></span
+          >
+        </div>
+        {% if post.data.featuredImage %}
+        <img
+          class="hidden aspect-[7/5] w-full border-2 border-ink object-cover md:col-span-3 md:block"
+          src="{{ post.data.featuredImage }}"
+          alt=""
+          width="700"
+          height="500"
+          loading="lazy"
+          decoding="async"
+        />
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
