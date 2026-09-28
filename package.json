@@ -21,7 +21,7 @@
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@tailwindcss/typography": "^0.5.20",
     "browser-sync": "^3.0.4",
-    "cssnano": "^7.1.9",
+    "cssnano": "^9.0.5",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.2",
