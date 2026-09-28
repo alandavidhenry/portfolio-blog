@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
-    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "@tailwindcss/typography": "^0.5.20",
     "browser-sync": "^3.0.4",
     "cssnano": "^7.1.9",
