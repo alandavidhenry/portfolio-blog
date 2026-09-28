@@ -1,69 +1,59 @@
-<header class="
-{% if page.url == "/blog/" or page.url.startsWith("/posts/blog/") or page.url == "/cv/" %}
-  mb-0 md:mb-8 lg:mb-12 xl:mb-26
-{% else %}
-  mb-10 md:mb-18 lg:mb-24 xl:mb-40
-{% endif %}">
-  <div class="container mx-auto px-4 py-12">
-    <div
-      class="flex flex-col md:flex-row md:justify-between md:items-center border-t-4 border-custom-dark"
-    >
-    {% if page.url == "/blog/" or page.url.startsWith("/posts/blog/") %}
-      <h1 class="text-6xl md:text-7xl lg:text-8xl font-lekton font-bold mt-4 mb-4">
-        Alan Henry's Blog
-      </h1>
-    {% elif page.url == "/cv/" %} 
-      <h1 class="text-6xl md:text-7xl lg:text-8xl font-lekton font-bold mt-4 mb-4">
-        Alan Henry's CV
-      </h1>
-    {% else %}
-      <h1 class="text-6xl md:text-7xl lg:text-8xl font-lekton font-bold mt-4 mb-4">
-        Alan Henry
-      </h1>
-    {% endif %}
-      <nav>
-        <ul class="space-x-10 lg:space-x-16">
-          {% if page.url == "/blog/" or page.url == "/cv/" %}
-          <li class="inline-block">
-            <a
-              href="/"
-              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
-              >&#60; Back</a
+{%- set section = 'home' -%}
+{%- set docRef = 'AH-00' -%}
+{%- if page.url == '/cv/' -%}
+  {%- set section = 'cv' -%}
+  {%- set docRef = 'AH-02' -%}
+{%- elif page.url == '/blog/' -%}
+  {%- set section = 'blog' -%}
+  {%- set docRef = 'AH-03' -%}
+{%- elif '/posts/blog/' in page.url -%}
+  {%- set section = 'post' -%}
+  {%- set docRef = 'AH-03/N-' ~ (((collections.blog | getCollectionItemIndex(page)) + 1) | pad) -%}
+{%- endif -%}
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="border-b-2 border-ink">
+  <div
+    class="wrap flex flex-col gap-5 py-5 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <a href="/" class="group w-fit">
+      <span
+        class="block font-display text-3xl font-extrabold uppercase leading-none transition-colors group-hover:text-signal"
+        >{{ site.name }}</span
+      >
+      <span class="label mt-1 block text-mute"
+        >{{ site.role }} — UK</span
+      >
+    </a>
+    <nav aria-label="Main">
+      <ul
+        class="grid grid-cols-3 border-2 border-ink sm:flex sm:border-0"
+      >
+        <li>
+          <a href="/#portfolio" class="nav-link"
             >
-          </li>
-          {% elif "posts/blog" in page.url %}
-          <li class="inline-block">
-            <a
-              href="/blog/"
-              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
-              >&#60; Back</a
+            Portfolio</a
+          >
+        </li>
+        <li class="border-l-2 border-ink sm:border-l sm:border-hair">
+          <a
+            href="/cv/"
+            class="nav-link"
+            {% if section == 'cv' %}aria-current="page"{% endif %}
+            > CV</a
+          >
+        </li>
+        <li class="border-l-2 border-ink sm:border-l sm:border-hair">
+          <a
+            href="/blog/"
+            class="nav-link"
+            {% if section == 'blog' %}aria-current="page"{% elif section == 'post' %}aria-current="true"{% endif %}
             >
-          </li>
-          {% else %}
-          <li class="inline-block">
-            <a
-              href="#portfolio"
-              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
-              >Portfolio</a
-            >
-          </li>
-          <li class="inline-block">
-            <a
-              href="/cv/"
-              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
-              >CV</a
-            >
-          </li>
-          <li class="inline-block">
-            <a
-              href="/blog/"
-              class="text-3xl md:text-4xl font-lekton hover:text-blue-400 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:font-sans"
-              >Blog</a
-            >
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-    </div>
+            Blog</a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>

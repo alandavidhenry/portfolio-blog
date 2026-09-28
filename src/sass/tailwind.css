@@ -1,3 +1,239 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-paper text-ink antialiased;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  ::selection {
+    @apply bg-signal text-ink;
+  }
+
+  :focus-visible {
+    outline: 3px solid theme('colors.signal');
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Layout */
+  .wrap {
+    @apply mx-auto w-full max-w-page px-4 sm:px-6 lg:px-8;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-signal focus:px-4 focus:py-3 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.08em] focus:text-ink;
+  }
+
+  /* Type */
+  .label {
+    @apply font-mono text-xs uppercase tracking-[0.08em];
+  }
+
+  .display {
+    @apply font-display font-extrabold uppercase leading-[0.82];
+  }
+
+  .link {
+    @apply underline decoration-signal decoration-2 underline-offset-[3px] hover:bg-signal hover:decoration-ink;
+  }
+
+  /* Page and section headings */
+  .doc-label {
+    @apply label flex items-center justify-between gap-4 border-b border-hair pb-2.5 text-mute;
+  }
+
+  .section-head {
+    @apply grid grid-cols-[auto_1fr] items-end gap-x-4 border-t-2 border-ink pb-8 pt-5 sm:grid-cols-[6.5rem_1fr_auto] sm:gap-x-6;
+  }
+
+  /* Meta link drops below the title on small screens */
+  .section-head > :nth-child(3) {
+    @apply col-span-2 mt-4 justify-self-start sm:col-span-1 sm:mt-0 sm:justify-self-end;
+  }
+
+  .section-num {
+    @apply font-display text-5xl font-bold leading-[0.8] text-signal sm:text-6xl;
+  }
+
+  .section-title {
+    @apply font-display text-5xl font-extrabold uppercase leading-[0.8] sm:text-6xl;
+  }
+
+  .subhead {
+    @apply label mb-5 flex items-center gap-3 border-b border-hair pb-2.5;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply label inline-flex items-center gap-2 border-2 border-ink px-4 py-2.5 font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-signal hover:text-ink;
+  }
+
+  .btn-secondary {
+    @apply hover:bg-ink hover:text-paper;
+  }
+
+  /* Header navigation */
+  .nav-link {
+    @apply label flex items-center justify-center gap-2 px-3 py-3 transition-colors hover:bg-ink hover:text-paper sm:px-4 sm:py-2;
+  }
+
+  .nav-link[aria-current] {
+    @apply bg-ink text-paper;
+  }
+
+  .nav-link:hover .nav-num,
+  .nav-link[aria-current] .nav-num {
+    @apply text-signal;
+  }
+
+  .status-dot {
+    @apply inline-block size-2 bg-signal;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .status-dot {
+      animation: blink 2.4s step-end infinite;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0.2;
+    }
+  }
+
+  /* Specification tables */
+  .spec {
+    @apply border-2 border-ink bg-sheet;
+  }
+
+  .spec-head {
+    @apply label flex justify-between gap-4 bg-ink px-3.5 py-2 text-paper;
+  }
+
+  .spec-row {
+    @apply grid grid-cols-[7rem_1fr] border-t border-hair font-mono text-xs uppercase tracking-[0.06em];
+  }
+
+  .spec-row:first-child {
+    @apply border-t-0;
+  }
+
+  .spec-row dt {
+    @apply border-r border-hair px-3.5 py-2.5 text-mute;
+  }
+
+  .spec-row dd {
+    @apply px-3.5 py-2.5 font-medium;
+  }
+
+  /* Portfolio cards */
+  .card {
+    @apply flex flex-col border-2 border-ink bg-sheet;
+  }
+
+  .card-head {
+    @apply label flex justify-between gap-4 border-b-2 border-ink px-3.5 py-2 transition-colors group-hover:bg-ink group-hover:text-paper;
+  }
+
+  .card-foot {
+    @apply label grid grid-cols-2 border-t-2 border-ink;
+  }
+
+  .card-foot > * {
+    @apply px-3.5 py-3;
+  }
+
+  .card-foot > * + * {
+    @apply border-l-2 border-ink;
+  }
+
+  .card-foot a {
+    @apply transition-colors hover:bg-signal;
+  }
+
+  .brief > summary {
+    @apply label inline-flex cursor-pointer list-none items-center gap-2 py-1 hover:text-signal;
+  }
+
+  .brief > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .brief-icon {
+    @apply inline-block transition-transform;
+  }
+
+  .brief[open] .brief-icon {
+    @apply rotate-45;
+  }
+
+  .brief[open] .brief-closed,
+  .brief:not([open]) .brief-open {
+    @apply hidden;
+  }
+
+  /* Blog register rows */
+  .register-row:has(a:focus-visible) {
+    outline: 3px solid theme('colors.signal');
+    outline-offset: -3px;
+  }
+
+  .register-row a:focus-visible {
+    outline: none;
+  }
+
+  .stretched-link::after {
+    @apply absolute inset-0 content-[''];
+  }
+
+  /* Decoration */
+  .graph-paper {
+    @apply relative isolate;
+  }
+
+  .graph-paper::before {
+    @apply pointer-events-none absolute inset-0 -z-10 content-[''];
+    background-image:
+      linear-gradient(to right, rgb(28 26 27 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(28 26 27 / 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center top;
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent);
+    mask-image: linear-gradient(to bottom, black 40%, transparent);
+  }
+
+  .hazard {
+    background: repeating-linear-gradient(
+      -45deg,
+      theme('colors.signal') 0 14px,
+      theme('colors.ink') 14px 28px
+    );
+  }
+
+  /* Code blocks in posts (toolbar added by main.js) */
+  .code-toolbar {
+    @apply label mt-8 flex items-center justify-between border-2 border-b-0 border-ink bg-char px-4 py-1.5 text-ash;
+  }
+
+  .code-toolbar + pre {
+    @apply mt-0;
+  }
+
+  .code-toolbar button {
+    @apply label text-paper hover:text-signal;
+  }
+}

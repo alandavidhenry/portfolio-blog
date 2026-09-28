@@ -20,7 +20,29 @@ eleventyComputed:
       url: 'https://www.cloudresumechallenge.site'
       github: 'alandavidhenry/cloud-resume-challenge'
       image: 'the-cloud-resume-challenge.jpg'
+  fullStackPortfolioCards:
+    - name: 'Health & Safety Task Management App'
+      technologies: 'HTML | CSS | TypeScript | Next.js | PostgreSQL | Docker'
+      description: 'A full-stack task management app with real-time collaboration. Built a REST API with Express and PostgreSQL, paired with a React frontend using optimistic UI updates, and deployed with Docker and GitHub Actions.'
+      url: null
+      github: null
+      image: 'placeholder.svg'
+    - name: 'Studio Session Planner'
+      technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
+      description: 'A work-in-progress web-based app that is being developed to replace an Excel spreadsheet that was being used in by The Band of The Coldstream Guards to plan recording studio sessions. The Angular framework was chosen due to its ability to easily pass data between the many components needed for this project. The data is stored in a Firebase Firestore database.'
+      url: 'https://studio-session-planner.web.app'
+      github: 'alandavidhenry/studio-session-planner'
+      image: 'studio_session_planner.jpg'
   frontEndPortfolioCards:
+    - name: 'RJOps'
+      technologies: 'HTML | CSS | Next.js'
+      description: "Defence Digital's portal that links to all their services. I ensured that the website correctly uses the Government and Ministry of Defence Design system to create a uniform and accessible design across all the services.\n\n
+      The website was originally using Eleventy (a static site generator) but I changed it to use Express.js to implement server side rendering (SSR). This allowed me to render the pages on the server then password protect them by only serving password protected pages when a user is authenticated.\n\n
+      Authentication is provided by using the Redhat Single Sign On (SSO) instance hosted on OpenShift. This is a custom version of Keycloak that is provided by RedHat as part of Openshift.\n\n
+      End-to-end testing is carried out using Playwright with Axe integration for accessibility testing."
+      url: 'https://www.digital.mod.uk'
+      github: null
+      image: 'digital-mod-uk.jpg'
     - name: 'MOD Digital'
       technologies: 'HTML | CSS | JavaScript | Express | Redis | Keycloak | Playwright | OpenShift | OWASP ZAP'
       description: "Defence Digital's portal that links to all their services. I ensured that the website correctly uses the Government and Ministry of Defence Design system to create a uniform and accessible design across all the services.\n\n
@@ -47,316 +69,180 @@ eleventyComputed:
       url: 'http://www.pikehousefarm.co.uk'
       github: 'alandavidhenry/pike-house-farm-website'
       image: 'pike_house_farm.jpg'
-    - name: 'With You With Me Capstone'
-      technologies: 'HTML | CSS | TailwindCSS | Angular | Firebase'
-      description: 'A website I created as my capstone project with With You With Me. I completed this course before being offered a role as a Frontend Developer contracted to the Ministry of Defence by With You With Me. It uses TailwindCSS to assist with the layout and the data is stored in a Firebase Realtime database.'
-      url: 'https://wywm-capstone.web.app/'
-      github: 'alandavidhenry/WYWM-Capstone'
-      image: 'wywm-capstone.jpg'
-    - name: 'Studio Session Planner'
-      technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
-      description: 'A work-in-progress web-based app that is being developed to replace an Excel spreadsheet that was being used in by The Band of The Coldstream Guards to plan recording studio sessions. The Angular framework was chosen due to its ability to easily pass data between the many components needed for this project. The data is stored in a Firebase Firestore database..'
-      url: 'https://studio-session-planner.web.app'
-      github: 'alandavidhenry/studio-session-planner'
-      image: 'studio_session_planner.jpg'
-    - name: 'The Goblin Store'
-      technologies: 'HTML | CSS | Bootstrap | jQuery | Firebase'
-      description: 'A website created during the Intermediate Web Development course offered by With You With Me. I completed this course before being offered a role as part of the training offered by With You With Me. It uses Bootstrap to assist with the layout and the data is stored in a Firebase Realtime database.'
-      url: 'https://wywm-gobblin-store.web.app/index.html'
-      github: 'alandavidhenry/WYWM-Intermediate-Web-Development'
-      image: 'goblin_store.jpg'
-    - name: 'Aircraft Warehouse'
-      technologies: 'HTML | CSS | Bootstrap | JavaScript'
-      description: 'A sinple webpage created for the final assignment of the web developer module as part of the JHub Coding Scheme. This scheme aims to give serving personnel the opportunity to gain valuable coding and AI skills, whilst getting paid to do so, so that they might use these skills to enable an information advantage. The website used JavaScript to calculate the costs for different aircraft and their optional extras.'
-      url: 'https://aircraft-warehouse.web.app'
-      github: 'alandavidhenry/aircraft-warehouse'
-      image: 'aircraft_warehouse.jpg'
-    - name: "Sergeants' Mess Booking App"
-      technologies: 'HTML | CSS | Bootstrap | TypeScript | Angular | Firebase'
-      description: " A work-in-progress web-based app that that can be used to book room and meals in the Sergeants' Mess in an Army barracks. The Angular framework was chosen due to its ability to easily pass data between the many components needed for this project. The data is stored in a Firebase Firestore database."
-      url: 'https://mess-booking-app.web.app/dashboard'
-      github: 'alandavidhenry/mess-booking-app'
-      image: 'mess_booking_app.jpg'
-    - name: 'Minimalist Weather App (Using Express & Node)'
-      technologies: 'HTML | CSS | JavaScript | Express | Node.js'
-      description: 'Simple weather app that uses the weatherapi.com API to fetch data from the chosen location. I have used the Express Generator to create the basic template then built on that. I used the simple response package to get the json data from the weather API.'
-      url: null
-      github: 'alandavidhenry/Minimalist-Weather-Page-Express'
-      image: 'simple_weather_app.jpg'
+eleventyImport:
+  collections: ['blog']
 ---
 
-<main>
-  <section>
-    <div class="container mx-auto mb-12 px-4 py-24">
-      <div class="md:flex md:space-x-8">
-        <div
-          class="md:w-6/12 lg:w-7/12 mb-6 md:mb-0 md:flex md:flex-col justify-start lg:justify-end"
+{% from "partials/project-card.njk" import projectCard %}
+{#- Empty placeholder cards (no name) are skipped, so a category appears once it has real entries -#}
+{%- set devOpsCards = devOpsPortfolioCards | selectattr('name') -%}
+{%- set cloudCards = cloudBasedPortfolioCards | selectattr('name') -%}
+{%- set fullStackCards = fullStackPortfolioCards | selectattr('name') -%}
+{%- set frontEndCards = frontEndPortfolioCards | selectattr('name') -%}
+{%- set categories = [
+  { title: 'DevOps', label: 'DevOps', cards: devOpsCards, offset: 0 },
+  { title: 'Cloud-based', label: 'Cloud', cards: cloudCards, offset: devOpsCards.length },
+  { title: 'Full stack', label: 'Full stack', cards: fullStackCards, offset: devOpsCards.length + cloudCards.length },
+  { title: 'Front end', label: 'Front end', cards: frontEndCards, offset: devOpsCards.length + cloudCards.length + fullStackCards.length }
+] -%}
+{%- set projectCount = devOpsCards.length + cloudCards.length + fullStackCards.length + frontEndCards.length -%}
+{%- set posts = collections.blog | reverse -%}
+
+<section class="graph-paper" aria-labelledby="profile-title">
+  <div class="wrap pb-16 pt-8 lg:pb-24 lg:pt-12">
+    <div class="mt-8 grid gap-10 lg:mt-12 lg:grid-cols-12 lg:gap-6">
+      <h1
+        id="profile-title"
+        class="display text-[5rem] sm:text-[8rem] md:text-[10rem] lg:col-span-8 lg:text-[9rem] xl:text-[11.75rem]"
+      >
+        <span class="sr-only">{{ site.name }}, </span>DevOps<br />Engineer<span
+          class="text-signal"
+          >.</span
         >
-          <h2
-            class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-lekton font-semibold align-bottom"
+      </h1>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-12 md:gap-6 lg:mt-16">
+      <div class="md:col-span-7">
+        <p class="text-xl font-medium leading-snug sm:text-2xl">
+          Analytical and self-driven DevOps Engineer, bringing expertise in
+          automation, scripting, cloud computing, and CI/CD pipelines.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#portfolio" class="btn btn-primary"
+            >View portfolio <span aria-hidden="true">↓</span></a
           >
-            DevOps Engineer
-          </h2>
+          <a href="/cv/" class="btn btn-secondary"
+            >Read CV <span aria-hidden="true">→</span></a
+          >
         </div>
-        <div class="md:w-6/12 lg:w-5/12">
-          <h3
-            class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-4"
-          >
-            Analytical and self-driven DevOps Engineer, bringing expertise in
-            automation, scripting, cloud computing, and CI/CD pipelines.
-            Passionate about creating robust cloud solutions and optimising
-            development and deployment processes. Excited to be at the forefront
-            of advancements in IT by continuously expanding my skill set.
-          </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  id="portfolio"
+  class="wrap scroll-mt-4 pb-20"
+  aria-labelledby="portfolio-title"
+>
+  <div class="section-head">
+    <span class="section-num" aria-hidden="true">01</span>
+    <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+  </div>
+
+  <div class="space-y-14">
+    {% for category in categories %}{% if category.cards.length %}
+    <div>
+      <h3 class="subhead">
+        <span class="size-2 bg-signal" aria-hidden="true"></span>
+        {{ category.title }}
+        <span class="ml-auto text-mute">{{ category.cards.length | pad }}</span>
+      </h3>
+      <div class="grid gap-6 md:grid-cols-2">
+        {% for card in category.cards %}
+        {{ projectCard(card, category.offset + loop.index, category.label, loop.last and loop.length % 2 == 1) }}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}{% endfor %}
+  </div>
+</section>
+
+<section id="cv" class="wrap scroll-mt-4 pb-20" aria-labelledby="cv-title">
+  <div class="section-head">
+    <span class="section-num" aria-hidden="true">02</span>
+    <h2 id="cv-title" class="section-title">CV</h2>
+    <a href="/cv/" class="label link">Full record <span aria-hidden="true">→</span></a>
+  </div>
+
+  <div class="grid border-2 border-ink bg-sheet lg:grid-cols-12">
+    <ol class="lg:col-span-8">
+      {% for item in site.record %}
+      <li
+        class="grid gap-1 border-t border-hair p-5 first:border-t-0 sm:grid-cols-[9rem_1fr] sm:gap-6"
+      >
+        <span class="label pt-1 text-mute">{{ item.period }}</span>
+        <div>
           <p
-            class="text-base sm:text-lg md:text-xl text-gray-600 font-libreFranklin leading-relaxed"
+            class="font-display text-3xl font-bold uppercase leading-none tracking-[0.01em]"
           >
-            Having completed one year in this field, I've successfully applied
-            my enthusiasm and discipline from my military background to excel in
-            the fast-paced tech industry. I'm eager to continue leveraging my
-            diverse experience and growing technical skills in new challenges.
+            {{ item.title }}
           </p>
+          <p class="mt-1.5 text-ink/80">{{ item.org }}</p>
         </div>
+      </li>
+      {% endfor %}
+    </ol>
+    <div
+      class="flex flex-col justify-between gap-8 bg-ink p-5 text-paper lg:col-span-4 lg:p-7"
+    >
+      <div>
+        <p class="label flex items-center gap-2 text-ash">
+          <span class="status-dot" aria-hidden="true"></span> Complete CV
+        </p>
+        <p
+          class="mt-4 font-display text-4xl font-bold uppercase leading-[0.9] tracking-[0.01em]"
+        >
+          Skills, experience, projects &amp; certifications
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="/cv/"
+          class="btn border-signal bg-signal text-ink hover:border-paper hover:bg-paper"
+          >Read CV <span aria-hidden="true">→</span></a
+        >
+        <a
+          href="{{ site.cv }}"
+          class="btn border-paper text-paper hover:bg-paper hover:text-ink"
+          download
+          >Download PDF <span aria-hidden="true">↓</span></a
+        >
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="bg-custom-dark text-custom-light" id="portfolio">
-    <div class="container mx-auto px-4 py-24">
-      <h2
-        class="text-5xl md:text-6xl xl:text-7xl font-lekton font-semibold mb-6 md:mb-10 lg:mb-14"
-      >
-        Portfolio
-      </h2>
+<section class="wrap pb-24" aria-labelledby="notes-title">
+  <div class="section-head">
+    <span class="section-num" aria-hidden="true">03</span>
+    <h2 id="notes-title" class="section-title">Field notes</h2>
+    <a href="/blog/" class="label link"
+      >All {{ posts.length }} entries <span aria-hidden="true">→</span></a
+    >
+  </div>
 
-      <div class="container mb-12 mx-auto">
-        <!-- DevOps -->
-        <!-- <h3
-          class="text-xl sm:text-2xl md:text-4xl font-libreFranklin font-semibold mb-4 lg:mb-8"
-        >
-          DevOps
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {% for portfolioCard in cloudBasedPortfolioCards %}
-          <div
-            class="portfolio-card mb-8 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
-            data-expanded="false"
-          >
-            <div class="p-4">
-              <img
-                class="w-full mb-6"
-                src="/images/{{ portfolioCard.image }}"
-                alt="{{ portfolioCard.name }}"
-              />
-              <h4
-                class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
-              >
-                {{ portfolioCard.name }}
-              </h4>
-              <p
-                class="description text-base font-libreFranklin text-gray-200 mb-2"
-              >
-                {{ portfolioCard.description | truncate(150) }}
-              </p>
-              <p
-                class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
-              >
-                {{ portfolioCard.description | replace("\n", '<br />') | safe }}
-              </p>
-              <p
-                class="url text-base font-libreFranklin font-semibold mb-2 hidden"
-              >
-                {% if portfolioCard.url %}
-                <span class="font-normal text-gray-200">Link: </span>
-                <a
-                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                  href="{{ portfolioCard.url }}"
-                  >{{ portfolioCard.url }}</a
-                >
-              </p>
-              {% endif %}
-              <p
-                class="github text-base font-libreFranklin font-semibold mb-2 hidden"
-              >
-                {% if portfolioCard.github %}
-                <span class="font-normal text-gray-200">GitHub: </span>
-                <a
-                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                  href="https://www.github.com/{{ portfolioCard.github }}"
-                  >{{ portfolioCard.github }}</a
-                >
-                {% endif %}
-              </p>
-              <p
-                class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
-              >
-                {{ portfolioCard.technologies }}
-              </p>
-              <a
-                class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
-                >Click for more...</a
-              >
-            </div>
-          </div>
-          {% endfor %}
-        </div> -->
-        <!-- Cloud-based -->
-        <h3
-          class="text-xl sm:text-2xl md:text-4xl font-libreFranklin font-semibold mb-4 lg:mb-8"
-        >
-          Cloud-based
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {% for portfolioCard in cloudBasedPortfolioCards %}
-          <div
-            class="portfolio-card mb-8 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
-            data-expanded="false"
-          >
-            <div class="p-4">
-              <img
-                class="w-full mb-6"
-                src="/images/{{ portfolioCard.image }}"
-                alt="{{ portfolioCard.name }}"
-              />
-              <h4
-                class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
-              >
-                {{ portfolioCard.name }}
-              </h4>
-              <p
-                class="description text-base font-libreFranklin text-gray-200 mb-2"
-              >
-                {{ portfolioCard.description | truncate(150) }}
-              </p>
-              <p
-                class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
-              >
-                {{ portfolioCard.description | replace("\n", '<br />') | safe }}
-              </p>
-              <p
-                class="url text-base font-libreFranklin font-semibold mb-2 hidden"
-              >
-                {% if portfolioCard.url %}
-                <span class="font-normal text-gray-200">Link: </span>
-                <a
-                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                  href="{{ portfolioCard.url }}"
-                  >{{ portfolioCard.url }}</a
-                >
-              </p>
-              {% endif %}
-              <p
-                class="github text-base font-libreFranklin font-semibold mb-2 hidden"
-              >
-                {% if portfolioCard.github %}
-                <span class="font-normal text-gray-200">GitHub: </span>
-                <a
-                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                  href="https://www.github.com/{{ portfolioCard.github }}"
-                  >{{ portfolioCard.github }}</a
-                >
-                {% endif %}
-              </p>
-              <p
-                class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
-              >
-                {{ portfolioCard.technologies }}
-              </p>
-              <a
-                class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
-                >Click for more...</a
-              >
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        <!-- Front end -->
-        <h3
-          class="text-xl sm:text-2xl md:text-4xl font-libreFranklin font-semibold mb-4 lg:mb-8"
-        >
-          Front end
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {% for portfolioCard in frontEndPortfolioCards %}
-          <div
-            class="portfolio-card mb-8 bg-stone-800 hover:bg-stone-700 rounded-lg overflow-hidden cursor-pointer transition"
-            data-expanded="false"
-          >
-            <div class="p-4">
-              <img
-                class="w-full mb-6"
-                src="/images/{{ portfolioCard.image }}"
-                alt="{{ portfolioCard.name }}"
-              />
-              <h4
-                class="text-lg sm:text-xl md:text-2xl font-libreFranklin font-semibold mb-1 lg:mb-3"
-              >
-                {{ portfolioCard.name }}
-              </h4>
-              <p
-                class="description text-base font-libreFranklin text-gray-200 mb-2"
-              >
-                {{ portfolioCard.description | truncate(150) }}
-              </p>
-              <p
-                class="full-description text-base font-libreFranklin text-gray-200 mb-4 hidden"
-              >
-                {{ portfolioCard.description | replace("\n", '<br />') | safe }}
-              </p>
-              <p
-                class="url text-base font-libreFranklin font-semibold mb-2 hidden"
-              >
-                {% if portfolioCard.url %}
-                <span class="font-normal text-gray-200">Link: </span>
-                <a
-                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                  href="{{ portfolioCard.url }}"
-                  >{{ portfolioCard.url }}</a
-                >
-              </p>
-              {% endif %}
-              <p
-                class="github text-base font-libreFranklin font-semibold mb-2 hidden"
-              >
-                {% if portfolioCard.github %}
-                <span class="font-normal text-gray-200">GitHub: </span>
-                <a
-                  class="text-gray-300 hover:text-blue-300 hover:underline focus-visible:px-2 focus-visible:bg-yellow-400 focus-visible:border-b-4 focus-visible:border-black focus-visible:text-black"
-                  href="https://www.github.com/{{ portfolioCard.github }}"
-                  >{{ portfolioCard.github }}</a
-                >
-                {% endif %}
-              </p>
-              <p
-                class="text-xs text-gray-400 font-libreFranklin font-semibold uppercase mb-2"
-              >
-                {{ portfolioCard.technologies }}
-              </p>
-              <a
-                class="more text-base font-libreFranklin font-semibold hover:text-blue-300 hover:underline"
-                >Click for more...</a
-              >
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
+  <div class="border-2 border-ink bg-sheet">
+    <div
+      class="label hidden grid-cols-[7.5rem_1fr_7rem_1.5rem] gap-6 bg-ink px-5 py-2 text-paper md:grid"
+      aria-hidden="true"
+    >
+      <span>Date</span><span>Title</span><span>Length</span><span></span>
     </div>
-  </section>
-
-  <!-- <section class="bg-custom-light text-custom-dark" id="about">
-    <div class="container mx-auto mb-12 px-4 py-24">
-      <h2 class="text-5xl xl:text-6xl font-lekton font-semibold mb-8">
-        About me
-      </h2>
-      <p
-        class="text-base sm:text-lg md:text-xl text-gray-600 font-libreFranklin leading-relaxed"
+    <ol>
+      {% for post in posts | head(3) %}
+      <li
+        class="register-row group relative flex flex-wrap items-baseline gap-x-4 gap-y-2 border-t border-hair px-5 py-4 transition-colors first:border-t-0 hover:bg-white md:grid md:grid-cols-[7.5rem_1fr_7rem_1.5rem] md:items-center md:gap-6 md:py-5"
       >
-        Having completed one year in this field, I've successfully applied my
-        enthusiasm and discipline from my military background to excel in the
-        fast-paced tech industry. I'm eager to continue leveraging my diverse
-        experience and growing technical skills in new challenges.
-      </p>
-    </div>
-  </section> -->
-</main>
+        <time class="label" datetime="{{ post.date | isoDate }}"
+          >{{ post.date | isoDate }}</time
+        >
+        <a
+          href="{{ post.url }}"
+          class="stretched-link order-last w-full font-display text-3xl font-bold uppercase leading-none tracking-[0.01em] md:order-none md:text-4xl"
+          >{{ post.data.title }}</a
+        >
+        <span class="label text-mute"
+          >{{ post.content | readingTime }} min read</span
+        >
+        <span
+          class="hidden text-right font-mono text-xl transition-transform group-hover:translate-x-1 md:block"
+          aria-hidden="true"
+          >→</span
+        >
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

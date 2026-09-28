@@ -7,7 +7,7 @@ description: Hooks were added to React in version 16.8. In this article I will
   look at each type of hook and give some examples of how and when they should
   be used.
 ---
-## Commonly used Reat hooks:
+## Commonly used React hooks:
 
 * useState
 * useEffect
@@ -88,7 +88,7 @@ const ThemeContext = React.createContext('light');
 function ThemedButton() {
   const theme = useContext(ThemeContext);
   return (
-    <button style={&#123; background: theme === 'light' ? '#fff' : '#000' &#125;}>
+    <button style={ background: theme === 'light' ? '#fff' : '#000' }>
       I'm styled based on the theme context!
     </button>
   );
@@ -273,7 +273,7 @@ function Tooltip({ children, tooltip }) {
   return (
     <>
       <div ref={ref}>{children}</div>
-      <div style={&#123; position: 'absolute', left: position.x, top: position.y &#125;}>
+      <div style={ position: 'absolute', left: position.x, top: position.y }>
         {tooltip}
       </div>
     </>
